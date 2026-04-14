@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poliana Rebouças — Advocacia e Consultoria Jurídica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --gold-dark: #A07840;
+    --navy: #0D1B2A;
+    --navy-mid: #14263A;
+    --navy-light: #1C3352;
+    --cream: #F5F0E8;
+    --cream-dark: #EAE0CC;
+    --text-light: #D4C5A9;
+    --white: #FDFAF5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 20% 30%, rgba(20,38,58,0.9) 0%, transparent 80%),
+      linear-gradient(160deg, #0D1B2A 0%, #14263A 50%, #0D1B2A 100%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,169,110,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 6rem;
+    max-width: 1100px;
+    width: 90%;
+    padding: 8rem 0 4rem;
+  }
+
+  .hero-text { text-align: left; }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-name span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 2rem;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 380px;
+  }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.08);
+  }
+
+  /* ── HERO PHOTO ── */
+  .hero-photo-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-photo-frame {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -15px; right: -15px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(201,169,110,0.3);
+    z-index: 0;
+  }
+
+  .hero-photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; left: -15px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(201,169,110,0.15);
+    z-index: 0;
+  }
+
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  .hero-photo-accent {
+    position: absolute;
+    bottom: -30px; left: -30px;
+    z-index: 2;
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 1.2rem 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .hero-photo-accent strong {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-photo-accent span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  /* ── SOBRE ── */
+  .sobre {
+    padding: 8rem 0;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .sobre-img-wrap {
+    position: relative;
+  }
+
+  .sobre-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .sobre-gold-bar {
+    position: absolute;
+    top: 20px; left: -20px;
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .sobre-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .sobre-text p strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .sobre-badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .badge {
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(201,169,110,0.3);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── ATUAÇÃO ── */
+  .atuacao {
+    padding: 8rem 0;
+    background: var(--navy);
+  }
+
+  .atuacao-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .atuacao-header .section-label {
+    justify-content: center;
+  }
+
+  .atuacao-header .section-label::before { display: none; }
+
+  /* TABS */
+  .tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(201,169,110,0.2);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tab-btn {
+    padding: 0.9rem 2.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .tab-btn + .tab-btn {
+    border-left: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .tab-btn.active {
+    background: rgba(201,169,110,0.1);
+    color: var(--gold);
+  }
+
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* CARDS */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(201,169,110,0.1);
+  }
+
+  .card {
+    background: var(--navy-mid);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .card:hover { background: var(--navy-light); }
+  .card:hover::before { width: 100%; }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .card-num {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: rgba(201,169,110,0.08);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* ── CONTATO ── */
+  .contato {
+    padding: 8rem 0;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contato-info p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contato-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contato-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+
+  .contato-item:hover { color: var(--gold); }
+
+  .contato-item-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201,169,110,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+
+  .contato-item:hover .contato-item-icon {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.1);
+  }
+
+  /* FORM */
+  .form-group { margin-bottom: 1.5rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(201,169,110,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 0.9rem 1.2rem;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form-group select option { background: var(--navy-mid); }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(201,169,110,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--navy);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(212,197,169,0.4);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-socials a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201,169,110,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .footer-socials a:hover {
+    background: rgba(201,169,110,0.1);
+    border-color: var(--gold);
+  }
+
+  /* ── GOLD DIVIDER ── */
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark));
+  }
+
+  .gold-divider::after {
+    background: linear-gradient(90deg, var(--gold-dark), transparent);
+  }
+
+  .gold-divider-icon {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text > * {
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-eyebrow  { animation-delay: 0.1s; }
+  .hero-name     { animation-delay: 0.2s; }
+  .hero-title    { animation-delay: 0.3s; }
+  .hero-divider  { animation-delay: 0.4s; }
+  .hero-quote    { animation-delay: 0.5s; }
+  .hero-cta      { animation-delay: 0.6s; }
+
+  .hero-photo-wrap {
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero-content { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
+    .hero-photo-frame { width: 280px; height: 340px; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .tabs-nav { width: 90%; }
+  }
+
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 0.8rem 1.2rem; font-size: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Poliana Rebouças</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#atuacao">Atuação</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Advocacia &amp; Consultoria Jurídica</div>
+      <h1 class="hero-name">Poliana<br><span>Rebouças</span></h1>
+      <p class="hero-title">OAB — Distrito Federal</p>
+      <div class="hero-divider"></div>
+      <p class="hero-quote">"É justo que muito custe o que muito vale."</p>
+      <div class="hero-cta">
+        <a href="#contato" class="btn-primary">Agendar Consulta →</a>
+        <a href="#atuacao" class="btn-outline">Áreas de Atuação</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+  <img src="776179127224_image.png" alt="Poliana Rebouças" class="hero-photo">
+  <div class="hero-photo-accent">
+    <strong>OAB</strong>
+    <span>Distrito Federal</span>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-img-wrap">
+        <div class="sobre-gold-bar"></div>
+        <img src="1776179083899_image.png" alt="Poliana Rebouças — OAB" class="sobre-img">
+      </div>
+      <div class="sobre-text">
+        <div class="section-label">Quem sou eu</div>
+        <h2 class="section-title">Comprometida com<br>a sua <em>defesa</em></h2>
+        <p>
+          Sou <strong>Poliana Rebouças</strong>, advogada inscrita na OAB do Distrito Federal, com atuação em diversas áreas do Direito. Guiada pelos valores da ética, da dedicação e da excelência, ofereço assessoria jurídica personalizada a pessoas físicas e empresas.
+        </p>
+        <p>
+          Acredito que o acesso à Justiça é um direito de todos. Por isso, atendo cada caso com atenção integral, construindo soluções estratégicas e transparentes desde a primeira consulta.
+        </p>
+        <div class="gold-divider"><span class="gold-divider-icon">⚖</span></div>
+        <div class="sobre-badges">
+          <span class="badge">Cristã</span>
+          <span class="badge">DF</span>
+          <span class="badge">Advocacia</span>
+          <span class="badge">Consultoria</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATUAÇÃO -->
+<section class="atuacao" id="atuacao">
+  <div class="section-inner">
+    <div class="atuacao-header">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Áreas de Atuação</h2>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('tradicionais', this)">Ramos Tradicionais</button>
+      <button class="tab-btn" onclick="switchTab('especializacoes', this)">Especializações</button>
+    </div>
+
+    <!-- TRADICIONAIS -->
+    <div class="tab-panel active" id="tab-tradicionais">
+      <div class="cards-grid">
+
+        <div class="card">
+          <span class="card-num">01</span>
+          <span class="card-icon">⚖️</span>
+          <h3 class="card-title">Direito Civil</h3>
+          <p class="card-desc">A área mais abrangente do ordenamento jurídico. Regula contratos, responsabilidade civil, direito de família, sucessões e relações patrimoniais entre pessoas físicas e jurídicas.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">02</span>
+          <span class="card-icon">🏛️</span>
+          <h3 class="card-title">Direito Penal</h3>
+          <p class="card-desc">Atuação na defesa técnica em processos criminais, crimes e contravenções, habeas corpus, revisões criminais e acompanhamento em todas as fases do processo penal.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">03</span>
+          <span class="card-icon">👷</span>
+          <h3 class="card-title">Direito do Trabalho</h3>
+          <p class="card-desc">Defesa dos direitos de empregados e empregadores. Reclamações trabalhistas, rescisões, horas extras, assédio moral, acordos coletivos e negociações sindicais.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">04</span>
+          <span class="card-icon">🏢</span>
+          <h3 class="card-title">Direito Empresarial</h3>
+          <p class="card-desc">Consultoria para o ambiente corporativo: contratos comerciais, abertura e encerramento de empresas, recuperação judicial, falências e contencioso empresarial.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">05</span>
+          <span class="card-icon">📊</span>
+          <h3 class="card-title">Direito Tributário</h3>
+          <p class="card-desc">Planejamento tributário, defesa em autuações fiscais, restituições de tributos indevidos e contencioso administrativo e judicial perante a Receita Federal e Estadual.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">06</span>
+          <span class="card-icon">🏛</span>
+          <h3 class="card-title">Direito Administrativo</h3>
+          <p class="card-desc">Relações entre cidadãos e o poder público. Licitações, contratos administrativos, servidores públicos, improbidade administrativa e recursos perante órgãos governamentais.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ESPECIALIZAÇÕES -->
+    <div class="tab-panel" id="tab-especializacoes">
+      <div class="cards-grid">
+
+        <div class="card">
+          <span class="card-num">01</span>
+          <span class="card-icon">💻</span>
+          <h3 class="card-title">Direito Digital</h3>
+          <p class="card-desc">Questões jurídicas da era digital: LGPD, crimes virtuais, proteção de dados, e-commerce, direitos autorais online e responsabilidade de plataformas digitais.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">02</span>
+          <span class="card-icon">📋</span>
+          <h3 class="card-title">Compliance e Ética</h3>
+          <p class="card-desc">Implementação de programas de conformidade empresarial, prevenção à lavagem de dinheiro, gestão de riscos jurídicos e adequação às normas regulatórias.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">03</span>
+          <span class="card-icon">🌿</span>
+          <h3 class="card-title">Direito Ambiental</h3>
+          <p class="card-desc">Sustentabilidade e regulação dos recursos naturais. Licenciamento ambiental, infrações, crimes ecológicos e assessoria para empresas na adequação à legislação ambiental.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">04</span>
+          <span class="card-icon">🛒</span>
+          <h3 class="card-title">Direito do Consumidor</h3>
+          <p class="card-desc">Defesa dos direitos nas relações de consumo. Ações de indenização, práticas abusivas, recall, publicidade enganosa, vícios de produto e serviço.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">05</span>
+          <span class="card-icon">🏥</span>
+          <h3 class="card-title">Direito Médico e da Saúde</h3>
+          <p class="card-desc">Regulação da atuação de profissionais e hospitais. Erro médico, responsabilidade civil hospitalar, planos de saúde e processos perante conselhos de classe.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-num">06</span>
+          <span class="card-icon">🏠</span>
+          <h3 class="card-title">Direito Imobiliário</h3>
+          <p class="card-desc">Transações imobiliárias, incorporações, usucapião, distrato, vícios construtivos, contratos de compra e venda, locação e regularização de imóveis.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="section-inner">
+    <div class="contato-grid">
+      <div class="contato-info">
+        <div class="section-label">Fale comigo</div>
+        <h2 class="section-title">Vamos conversar<br>sobre o seu <em>caso</em></h2>
+        <p>Cada situação é única. Entre em contato para uma consulta inicial e descubra como posso ajudá-lo a encontrar a melhor solução jurídica para o seu caso.</p>
+        <div class="contato-items">
+          <a href="mailto:polireboucas@gmail.com" class="contato-item">
+            <div class="contato-item-icon">✉</div>
+            <span>polireboucas@gmail.com</span>
+          </a>
+          <a href="https://instagram.com/pollyanarv" target="_blank" class="contato-item">
+            <div class="contato-item-icon">📷</div>
+            <span>@pollyanarv</span>
+          </a>
+          <a href="https://www.threads.net/@pollyanarv" target="_blank" class="contato-item">
+            <div class="contato-item-icon">🧵</div>
+            <span>@pollyanarv — Threads</span>
+          </a>
+          <div class="contato-item">
+            <div class="contato-item-icon">📍</div>
+            <span>Distrito Federal, Brasil</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Nome completo" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Área de interesse</label>
+          <select required>
+            <option value="" disabled selected>Selecione a área</option>
+            <optgroup label="Ramos Tradicionais">
+              <option>Direito Civil</option>
+              <option>Direito Penal / Criminal</option>
+              <option>Direito do Trabalho</option>
+              <option>Direito Empresarial</option>
+              <option>Direito Tributário</option>
+              <option>Direito Administrativo</option>
+            </optgroup>
+            <optgroup label="Especializações">
+              <option>Direito Digital</option>
+              <option>Compliance e Ética</option>
+              <option>Direito Ambiental</option>
+              <option>Direito do Consumidor</option>
+              <option>Direito Médico e da Saúde</option>
+              <option>Direito Imobiliário</option>
+            </optgroup>
+            <option>Outro / Não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Descreva brevemente sua situação..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+          Enviar Mensagem →
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Poliana Rebouças</div>
+  <div class="footer-copy">© 2025 — Advocacia e Consultoria Jurídica · OAB/DF</div>
+  <div class="footer-socials">
+    <a href="mailto:polireboucas@gmail.com" title="E-mail">✉</a>
+    <a href="https://instagram.com/pollyanarv" target="_blank" title="Instagram">📷</a>
+    <a href="https://www.threads.net/@pollyanarv" target="_blank" title="Threads">🧵</a>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Contact form → mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nome    = this.querySelector('input[type=text]').value;
+    const email   = this.querySelector('input[type=email]').value;
+    const area    = this.querySelector('select').value;
+    const msg     = this.querySelector('textarea').value;
+    const subject = encodeURIComponent('Consulta Jurídica — ' + area);
+    const body    = encodeURIComponent(
+      'Nome: ' + nome + '\n' +
+      'E-mail: ' + email + '\n' +
+      'Área de interesse: ' + area + '\n\n' +
+      'Mensagem:\n' + msg
+    );
+    window.location.href = 'mailto:polireboucas@gmail.com?subject=' + subject + '&body=' + body;
+  });
+
+  // Scroll fade-in for cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 0.08) + 's';
+        entry.target.style.animation = 'fadeUp 0.6s ease both';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
