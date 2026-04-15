@@ -277,17 +277,17 @@
 
   .hero-photo-accent {
     position: absolute;
-    bottom: -30px; left: -30px;
+    bottom: -18px; left: -18px;
     z-index: 2;
     background: var(--navy-mid);
     border: 1px solid rgba(201,169,110,0.3);
-    padding: 1.2rem 1.5rem;
+    padding: 0.65rem 0.9rem;
     font-family: 'Cormorant Garamond', serif;
   }
 
   .hero-photo-accent strong {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 300;
     color: var(--gold);
     line-height: 1;
@@ -1010,10 +1010,15 @@
   // Contact form → Formspree
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const nome  = this.querySelector('input[type=text]').value;
-    const email = this.querySelector('input[type=email]').value;
+    const nome  = this.querySelector('input[type=text]').value.trim();
+    const email = this.querySelector('input[type=email]').value.trim();
     const area  = this.querySelector('select').value;
-    const msg   = this.querySelector('textarea').value;
+    const msg   = this.querySelector('textarea').value.trim();
+
+    if (!nome || !email || !msg) {
+      alert('Por favor, preencha nome, e-mail e mensagem.');
+      return;
+    }
 
     const btn = this.querySelector('button[type=submit]');
     btn.disabled = true;
@@ -1023,20 +1028,31 @@
       const res = await fetch('https://formspree.io/f/mbdqlyjz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name: nome, email, area, message: msg })
+        body: JSON.stringify({ name: nome, _replyto: email, area: area, message: msg })
       });
       if (res.ok) {
         btn.textContent = 'Mensagem Enviada ✓';
+        btn.style.background = 'linear-gradient(135deg,#2d6a4f,#40916c)';
+        // Show success message
+        let ok = document.getElementById('form-success');
+        if (!ok) {
+          ok = document.createElement('div');
+          ok.id = 'form-success';
+          ok.style.cssText = 'margin-top:1.2rem;padding:1rem 1.4rem;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.4);border-radius:4px;font-family:Cormorant Garamond,serif;font-size:1rem;color:#c9a96e;text-align:center;line-height:1.6';
+          ok.innerHTML = '✓ Mensagem enviada com sucesso!<br><span style="font-size:.85rem;opacity:.8">Em breve você será contactado por Poliana Rebouças.</span>';
+          btn.parentNode.insertBefore(ok, btn.nextSibling);
+        }
+        ok.style.display = 'block';
         this.reset();
       } else {
         btn.disabled = false;
         btn.textContent = 'Enviar Mensagem →';
-        alert('Erro ao enviar. Tente novamente.');
+        alert('Erro ao enviar. Tente novamente em instantes.');
       }
     } catch(err) {
       btn.disabled = false;
       btn.textContent = 'Enviar Mensagem →';
-      alert('Erro de conexão. Tente novamente.');
+      alert('Erro de conexão. Verifique sua internet e tente novamente.');
     }
   });
 
