@@ -929,9 +929,9 @@
         <h2 class="section-title">Vamos conversar<br>sobre o seu <em>caso</em></h2>
         <p>Cada situação é única. Entre em contato para uma consulta inicial e descubra como posso ajudá-lo a encontrar a melhor solução jurídica para o seu caso.</p>
         <div class="contato-items">
-          <a href="/cdn-cgi/l/email-protection#7e0e1112170c1b1c110b1d1f0d3e19131f1712501d1113" class="contato-item">
+          <a href="mailto:polireboucas@gmail.com" class="contato-item">
             <div class="contato-item-icon">✉</div>
-            <span><span class="__cf_email__" data-cfemail="acdcc3c0c5dec9cec3d9cfcddfeccbc1cdc5c082cfc3c1">[email&#160;protected]</span></span>
+            <span>polireboucas@gmail.com</span>
           </a>
           <a href="https://instagram.com/pollyanarv" target="_blank" class="contato-item">
             <div class="contato-item-icon">📷</div>
@@ -993,7 +993,7 @@
   <div class="footer-logo">Poliana Rebouças</div>
   <div class="footer-copy">© 2025 — Advocacia e Consultoria Jurídica · OAB/DF</div>
   <div class="footer-socials">
-    <a href="/cdn-cgi/l/email-protection#b2c2dddedbc0d7d0ddc7d1d3c1f2d5dfd3dbde9cd1dddf" title="E-mail">✉</a>
+    <a href="mailto:polireboucas@gmail.com" title="E-mail">✉</a>
     <a href="https://instagram.com/pollyanarv" target="_blank" title="Instagram">📷</a>
           </div>
 </footer>
@@ -1025,10 +1025,16 @@
     btn.textContent = 'Enviando...';
 
     try {
-      const res = await fetch('https://formspree.io/f/mbdqlyjz', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name: nome, _replyto: email, area: area, message: msg })
+        body: JSON.stringify({
+          access_key: 'a77999ef-85fb-4b59-b837-97497e20f948',
+          name: nome,
+          email: email,
+          area: area,
+          message: msg
+        })
       });
       if (res.ok) {
         btn.textContent = 'Mensagem Enviada ✓';
