@@ -929,11 +929,9 @@
         <h2 class="section-title">Vamos conversar<br>sobre o seu <em>caso</em></h2>
         <p>Cada situação é única. Entre em contato para uma consulta inicial e descubra como posso ajudá-lo a encontrar a melhor solução jurídica para o seu caso.</p>
         <div class="contato-items">
-          <a href="mailto:polireboucas@gmail.com" class="contato-item">
+          <a href="/cdn-cgi/l/email-protection#7e0e1112170c1b1c110b1d1f0d3e19131f1712501d1113" class="contato-item">
             <div class="contato-item-icon">✉</div>
-            <span>polireboucas@gmail.com</span>
-            <input type="hidden" name="from_name" value="Site Poliana Rebouças">
-            <input type="hidden" name="subject" value="Novo Contato do Site">
+            <span><span class="__cf_email__" data-cfemail="acdcc3c0c5dec9cec3d9cfcddfeccbc1cdc5c082cfc3c1">[email&#160;protected]</span></span>
           </a>
           <a href="https://instagram.com/pollyanarv" target="_blank" class="contato-item">
             <div class="contato-item-icon">📷</div>
@@ -945,56 +943,47 @@
           </div>
         </div>
       </div>
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="a77999ef-85fb-4b59-b837-97497e20f948">
-        <input type="hidden" name="redirect" value="https://polianareboucasadv.github.io/page/#contato">
-        <input type="hidden" name="theme" value="dark">
-  
- 
-  <div class="form-group">
-    <label>Seu nome</label>
-    <input type="text" name="name" placeholder="Nome completo" required>
-  </div>
 
-  <div class="form-group">
-    <label>E-mail</label>
-    <input type="email" name="email" placeholder="seu@email.com" required>
-  </div>
-
-  <div class="form-group">
-    <label>Área de interesse</label>
-    <select name="area_interesse" required>
-      <option value="" disabled selected>Selecione a área</option>
-      <optgroup label="Ramos Tradicionais">
-        <option>Direito Civil</option>
-        <option>Direito Penal / Criminal</option>
-        <option>Direito do Trabalho</option>
-        <option>Direito Empresarial</option>
-        <option>Direito Tributário</option>
-        <option>Direito Administrativo</option>
-      </optgroup>
-      <optgroup label="Especializações">
-        <option>Direito Digital</option>
-        <option>Compliance e Ética</option>
-        <option>Direito Ambiental</option>
-        <option>Direito do Consumidor</option>
-        <option>Direito Médico e da Saúde</option>
-        <option>Direito Imobiliário</option>
-      </optgroup>
-      <option>Outro / Não sei</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>Mensagem</label>
-    <textarea name="mensagem" placeholder="Descreva brevemente sua situação..."></textarea>
-  </div>
-
-  <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
-    Enviar Mensagem →
-  </button>
-  
-</form>
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Nome completo" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Área de interesse</label>
+          <select required>
+            <option value="" disabled selected>Selecione a área</option>
+            <optgroup label="Ramos Tradicionais">
+              <option>Direito Civil</option>
+              <option>Direito Penal / Criminal</option>
+              <option>Direito do Trabalho</option>
+              <option>Direito Empresarial</option>
+              <option>Direito Tributário</option>
+              <option>Direito Administrativo</option>
+            </optgroup>
+            <optgroup label="Especializações">
+              <option>Direito Digital</option>
+              <option>Compliance e Ética</option>
+              <option>Direito Ambiental</option>
+              <option>Direito do Consumidor</option>
+              <option>Direito Médico e da Saúde</option>
+              <option>Direito Imobiliário</option>
+            </optgroup>
+            <option>Outro / Não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Descreva brevemente sua situação..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+          Enviar Mensagem →
+        </button>
+      </form>
     </div>
   </div>
 </section>
@@ -1004,7 +993,7 @@
   <div class="footer-logo">Poliana Rebouças</div>
   <div class="footer-copy">© 2025 — Advocacia e Consultoria Jurídica · OAB/DF</div>
   <div class="footer-socials">
-    <a href="mailto:polireboucas@gmail.com" title="E-mail">✉</a>
+    <a href="/cdn-cgi/l/email-protection#b2c2dddedbc0d7d0ddc7d1d3c1f2d5dfd3dbde9cd1dddf" title="E-mail">✉</a>
     <a href="https://instagram.com/pollyanarv" target="_blank" title="Instagram">📷</a>
           </div>
 </footer>
@@ -1018,50 +1007,57 @@
     btn.classList.add('active');
   }
 
-  // Contact form → Web3Forms (Ajustado)
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
+  // Contact form → Formspree
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const nome  = this.querySelector('input[type=text]').value.trim();
+    const email = this.querySelector('input[type=email]').value.trim();
+    const area  = this.querySelector('select').value;
+    const msg   = this.querySelector('textarea').value.trim();
 
-  const btn = this.querySelector('button[type=submit]');
-  const originalText = btn.innerHTML;
-  
-  // Feedback visual de carregamento
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-  // Captura todos os dados do formulário automaticamente
-  const formData = new FormData(this);
-  const object = Object.fromEntries(formData);
-  const json = JSON.stringify(object);
-
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: json
-    });
-
-    if (response.status === 200) {
-      // Sucesso! Botão fica verde e texto muda
-      btn.innerHTML = 'Mensagem Enviada ✓';
-      btn.style.backgroundColor = '#28a745'; 
-      this.reset(); // Limpa os campos do formulário
-    } else {
-      throw new Error();
+    if (!nome || !email || !msg) {
+      alert('Por favor, preencha nome, e-mail e mensagem.');
+      return;
     }
-  } catch (error) {
-    // Erro! Botão avisa que falhou
-    btn.innerHTML = 'Erro ao enviar';
-    btn.style.backgroundColor = '#dc3545';
-    
-    // Volta ao normal depois de 3 segundos para tentar de novo
-    setTimeout(() => {
-      btn.innerHTML = originalText;
+
+    const btn = this.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch('https://formspree.io/f/mbdqlyjz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: nome, _replyto: email, area: area, message: msg })
+      });
+      if (res.ok) {
+        btn.textContent = 'Mensagem Enviada ✓';
+        btn.style.background = 'linear-gradient(135deg,#2d6a4f,#40916c)';
+        // Show success message
+        let ok = document.getElementById('form-success');
+        if (!ok) {
+          ok = document.createElement('div');
+          ok.id = 'form-success';
+          ok.style.cssText = 'margin-top:1.2rem;padding:1rem 1.4rem;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.4);border-radius:4px;font-family:Cormorant Garamond,serif;font-size:1rem;color:#c9a96e;text-align:center;line-height:1.6';
+          ok.innerHTML = '✓ Mensagem enviada com sucesso!<br><span style="font-size:.85rem;opacity:.8">Em breve você será contactado por Poliana Rebouças.</span>';
+          btn.parentNode.insertBefore(ok, btn.nextSibling);
+        }
+        ok.style.display = 'block';
+        this.reset();
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Enviar Mensagem →';
+        alert('Erro ao enviar. Tente novamente em instantes.');
+      }
+    } catch(err) {
       btn.disabled = false;
-      btn.style.backgroundColor = ''; 
-    }, 3000);
-  }
-});
+      btn.textContent = 'Enviar Mensagem →';
+      alert('Erro de conexão. Verifique sua internet e tente novamente.');
+    }
+  });
+
+  // Scroll fade-in for cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.t
